@@ -1,8 +1,24 @@
-import { useParams , useSearchParams,useLocation } from "react-router"
+import { useParams , useSearchParams,useLocation, Link } from "react-router"
 import { Navigate } from "react-router"
-import HeaderMenu from "../layouts/HeaderMenu"
+import HeaderMenu from "../components/HeaderMenu"
+import Sidebar from "../components/Sidebar"
+import { BlogCard } from "../components/BlogCard"
 
 const Blog = () => {
+const Card = {
+  title: "SUCCESFUL REPAIR OF THE MX-1 SAT",
+  link: "",
+  imageUrl: "",
+  Date: "",
+  Paragraph: ``
+}
+const Card2 = {
+  title: "",
+  Link: "",
+  imageUrl: "",
+  Date: "",
+  Paragraph: ``
+}
   return (
     <>
     <div id="page">
@@ -48,9 +64,9 @@ const Blog = () => {
         <div className="article">
           <ul>
             <li>
-              <a href="singlepost.html">
+              <Link to="/singlepost/1">
                 <img src="/src/assets/artwork/astronaut.jpg" alt="" />
-              </a>
+              </Link>
               <h1>SUCCESFUL REPAIR OF THE MX-1 SAT</h1>
               <span>FEBRUARY 6, 2023</span>
               <p>
@@ -58,14 +74,14 @@ const Blog = () => {
                 Templates for you, for free. You can replace all this text with
                 your own text.
               </p>
-              <a href="singlepost.html" className="more">
+              <Link to="/singlepost/1" className="more">
                 Read More
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="singlepost.html">
+              <Link to="/singlepost/1">
                 <img src="/src/assets/artwork/satellite-dish.jpg" alt="" />
-              </a>
+              </Link>
               <h1>ALIEN SIGNAL DISCOVERY</h1>
               <span>FEBRUARY 3, 2023</span>
               <p>
@@ -73,43 +89,13 @@ const Blog = () => {
                 template, you're free to use this website template without
                 linking back to us.
               </p>
-              <a href="singlepost.html" className="more">
+              <Link to="/singlepost/1" className="more">
                 Read More
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
-        <div className="sidebar">
-          <ul>
-            <li>
-              <h1>FEATURED POSTS</h1>
-              <a href="singlepost.html">
-                <img src="/src/assets/artwork/moon-satellite.jpg" alt="" />
-              </a>
-              <h2>SOYUZ TMA-M</h2>
-              <span>FEBRUARY 6, 2023</span>
-            </li>
-            <li>
-              <h1>RECENT POSTS</h1>
-              <ul>
-                <li>
-                  <a href="singlepost.html">
-                    <img src="/src/assets/artwork/alien-life.jpg" alt="" />
-                  </a>
-                  <h2>ALIEN LIFE</h2>
-                  <span>FEBRUARY 3, 2023</span>
-                </li>
-                <li>
-                  <a href="singlepost.html">
-                    <img src="/src/assets/artwork/galaxy.jpg" alt="" />
-                  </a>
-                  <h2>THE GALAXY</h2>
-                  <span>FEBRUARY 1, 2023</span>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        <Sidebar/>
       </div>
     </div>
   </div>

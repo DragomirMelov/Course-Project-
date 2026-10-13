@@ -1,45 +1,13 @@
 import Footer from "../layouts/footer"
 import { Navigate } from "react-router"
-import HeaderMenu from "../layouts/HeaderMenu"
+import Header from "../components/Header"
+import HeaderMenu from "../components/HeaderMenu"
 
 const Index = () => {
   return (
   <>
   <div id="page">
-  <div id="header">
-    <div>
-      <a href="index.html" className="logo">
-        <img src="/src/assets/artwork/logo.png" alt="" />
-      </a>
-      <ul id="navigation">
-        <li className="selected">
-          <a href="index.html">Home</a>
-        </li>
-        <li>
-          <a href="about.html">About</a>
-        </li>
-        <li className="menu">
-          <a href="projects.html">Projects</a>
-          <ul className="primary">
-            <li>
-              <a href="proj1.html">proj 1</a>
-            </li>
-          </ul>
-        </li>
-        <li className="menu">
-          <a href="blog.html">Blog</a>
-          <ul className="secondary">
-            <li>
-              <a href="singlepost.html">Single post</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="contact.html">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+    <HeaderMenu/>
   <div id="body" className="home">
     <div className="header">
       <div>

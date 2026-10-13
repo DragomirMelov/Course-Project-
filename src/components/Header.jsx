@@ -1,8 +1,8 @@
 import { Link } from "react-router"
 
-const HeaderMenu = () => {
-    return (
-<>
+const Header = () => {
+  return (
+  <>
     <div id="header">
     <div>
         <Link to="/"  className="logo">
@@ -37,8 +37,8 @@ const HeaderMenu = () => {
     </ul>
     </div>
     </div>
-</>
-    )
+  </>
+  )
 }
 
-export default HeaderMenu
+export default Header

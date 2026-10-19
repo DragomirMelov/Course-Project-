@@ -1,5 +1,4 @@
 import HeaderMenu from "../components/HeaderMenu"
-import Footer from "../layouts/footer"
 
 const About = () => {
   return (
@@ -73,7 +72,6 @@ const About = () => {
       </div>
     </div>
   </div>
-    <Footer/>
 </div>
 
     </>

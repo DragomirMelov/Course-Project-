@@ -1,21 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export const BlogCard = (props) => {
+
+
+
 return (
 <>
 
             <li>
-              <Link to="/singlepost/1">
-                <img src="/src/assets/artwork/astronaut.jpg" alt="" />
+              <Link to={`/blogs/${props.link}`}>
+                <img src={props.imageUrl} alt="" />
               </Link>
-              <h1>{prop.title}</h1>
-              <span>FEBRUARY 6, 2023</span>
-              <p>
-                This website template has been designed by Free Website
-                Templates for you, for free. You can replace all this text with
-                your own text.
-              </p>
-              <Link to="/singlepost/1" className="more">
+              <h1>{props.title}</h1>
+              <span>{props.date}</span>
+              <Link to={`/blogs/${props.link}`} className="more">
                 Read More
               </Link>
             </li>

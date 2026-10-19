@@ -1,5 +1,3 @@
-import Footer from "../layouts/footer"
-import { Navigate } from "react-router"
 import Header from "../components/Header"
 import HeaderMenu from "../components/HeaderMenu"
 
@@ -90,7 +88,6 @@ const Index = () => {
       </div>
     </div>
   </div>
- <Footer/>
 </div>
 
   </>

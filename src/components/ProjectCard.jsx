@@ -1,25 +1,20 @@
-import React from 'react'
+import { Link } from "react-router"
 
 export const ProjectCard = (props) => {
-    console.log(props.imageUrl)
 return (
     <>
               <li>
-            <a href="proj1.html">
+            <Link to={`/projects/${props.link}`}>
               <img src={props.imageUrl} alt="" />
-            </a>
+            </Link>
             <div>
               <h1>{props.title}</h1>
               <p>
-                Our website templates are created with inspiration, checked for
-                quality and originality and meticulously sliced and coded.
-                What’s more, they’re absolutely free! You can do a lot with
-                them. You can modify them. You can use them to design websites
-                for clients, so long as you agree with the Terms of Use.
+                {props.Paragraph}
               </p>
-              <a href="proj1.html" className="more">
+              <Link to={`/projects/${props.link}`} className="more">
                 Read More
-              </a>
+              </Link>
             </div>
           </li>
     </>

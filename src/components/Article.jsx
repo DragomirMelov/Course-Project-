@@ -1,28 +1,48 @@
-import React from 'react'
+import  { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
+import { useParams } from 'react-router'
+import Api from '../utils/requester';
+import HeaderMenu from './HeaderMenu';
 
 const Article = (props) => {
-    return (
-    <>
+  const {projectid} = useParams();
+  const [article,setArticle] = useState();
+  
+  useEffect(()=>{
+          const fetchData = () =>{
+          Api(null, "projects",`?id=eq.${projectid}`).then(data => setArticle(...data));
+          }
+      fetchData()
+  },[])
+  useEffect(() => {
+  console.log("projects is nowr", article);   // runs on mount AND after setProjects
+}, [article]);
+
+
+if (article === undefined) return <p>Loading…</p>
+
+return(
+  <><HeaderMenu/>
+<div id="page">
+  <div id="body">
     <div className="header">
       <div>
-        <h1>Single Post</h1>
-        <div className="article">
-          <img src="/src/assets/artwork/martianrover-journey.jpg" alt="" />
-          <h1>{props.title}</h1>
-          <span>{props.Date}</span>
+        <h1>{article.title}</h1>
+        <img src={article.image} alt="" />
+          <span>{article.Date}</span>
+        <p>
+            {article.body}
+          </p>          
           <p>
-            {props.Paragraph1}
+            {article.Article}
           </p>
-          <p>
-            {props.Paragraph2}
-          </p>
-        </div>
-          <Sidebar/>
       </div>
     </div>
-    </>
+  </div>
+</div>
+</>
 )
+
 }
 
 export default Article

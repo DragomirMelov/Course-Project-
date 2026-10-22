@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import Header from "../components/Header"
 import HeaderMenu from "../components/HeaderMenu"
 
@@ -12,9 +13,9 @@ const Index = () => {
         <img src="/src/assets/artwork/satellite.png" alt="" className="satellite" />
         <h1>SOYUZ TMA-M</h1>
         <h2>SPACECRAFT</h2>
-        <a href="blog.html" className="more">
+        <Link to="blog" className="more">
           Read More
-        </a>
+        </Link>
         <h3>FEATURED PROJECTS</h3>
         <ul>
           <li>

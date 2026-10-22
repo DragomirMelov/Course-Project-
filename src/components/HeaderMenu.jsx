@@ -28,7 +28,7 @@ const HeaderMenu = () => {
             <Link to="/blog">Blog</Link>
         </li>
         <li className={`${route.pathname === "/contact" ? 'menu selected': ''}`}>
-            <Link to="/contact">Contact</Link>
+            <Link to="/contact">Acount</Link>
         </li>
     </ul>
     </div>

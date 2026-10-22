@@ -1,22 +1,21 @@
-import  { useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import HeaderMenu from '../components/HeaderMenu'
 import { ProjectCard } from '../components/ProjectCard'
 import Api from '../utils/requester'
 
+import { UserContext } from '../Context/userContext';
 
 const Project = () => {
   const [projects,setPropjects] = useState([]);
+  const { auth } = useContext(UserContext);
+  const token = auth?.access_token;
     useEffect(() => {
       const fetchData = () =>{
-    Api(null, "projects","?order=created_at.desc ").then(data => setPropjects(data));
+    Api(token, "projects","?order=created_at.desc ").then(data => setPropjects(data));
     }
       fetchData()
     },[])
 
-
-useEffect(() => {
-  console.log("projects is now:", projects);   // runs on mount AND after setProjects
-}, [projects]);
 
 
   return (

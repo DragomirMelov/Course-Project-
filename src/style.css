@@ -82,7 +82,6 @@ img {
 	margin: 0;
 	min-height: 60px;
 	padding: 0 24px;
- *padding: 0 23px; /* Needed for IE8 and old versions */
 	text-align: center;
 	text-transform: uppercase;
 	width: auto;
@@ -249,7 +248,6 @@ img {
 	font-weight: normal;
 	line-height: 23px;
 	margin: 96px 0 0;
- *margin: 102px 0 0;/* Needed for IE8 and old versions */
 	min-height: 27px;
 	padding: 17px 0 10px;
 	position: relative;

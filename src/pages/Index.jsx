@@ -13,30 +13,30 @@ const Index = () => {
         <img src="/src/assets/artwork/satellite.png" alt="" className="satellite" />
         <h1>SOYUZ TMA-M</h1>
         <h2>SPACECRAFT</h2>
-        <Link to="blog" className="more">
+        <Link to="/projects" className="more">
           Read More
         </Link>
         <h3>FEATURED PROJECTS</h3>
         <ul>
           <li>
-            <a href="projects.html">
+            <Link to="/projects">
               <img src="/src/assets/artwork/project-image1.jpg" alt="" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="projects.html">
+            <Link to="/projects">
               <img src="/src/assets/artwork/project-image2.jpg" alt="" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="projects.html">
+            <Link to="/projects">
               <img src="/src/assets/artwork/project-image3.jpg" alt="" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="projects.html">
+            <Link to="/projects">
               <img src="/src/assets/artwork/project-image4.jpg" alt="" />
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -55,7 +55,7 @@ const Index = () => {
         <ul>
           <li>
             <h1>FEATURED VIDEO</h1>
-            <a href="blog.html">
+            <a href="https://www.youtube.com/watch?v=zSiHa7Y5iDo">
               <img src="/src/assets/artwork/mars-rover.jpg" alt="" />
               <span />
             </a>
@@ -64,24 +64,24 @@ const Index = () => {
             <h1>LATEST BLOG</h1>
             <ul>
               <li>
-                <a href="blog.html">
+                <Link to="/blog">
                   <img src="/src/assets/artwork/finding-planet.jpg" alt="" />
-                </a>
+                </Link>
                 <h1>FINDING PLANET X-123</h1>
                 <span>FEBRUARY 6, 2023</span>
-                <a href="blog.html" className="more">
+                <Link to="/blog" className="more">
                   Read More
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="blog.html">
+                <Link to="/blog">
                   <img src="/src/assets/artwork/new-satellitedish.jpg" alt="" />
-                </a>
+                </Link>
                 <h1>NEW SATELLITE DISH</h1>
                 <span>FEBRUARY 3, 2023</span>
-                <a href="blog.html" className="more">
+                <Link to="/blog" className="more">
                   Read More
-                </a>
+                </Link>
               </li>
             </ul>
           </li>

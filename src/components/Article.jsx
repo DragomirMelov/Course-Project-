@@ -1,25 +1,32 @@
-import  { useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 import Api from '../utils/requester';
 import HeaderMenu from './HeaderMenu';
+import { UserContext } from '../Context/userContext';
 
 const Article = (props) => {
   const {projectid} = useParams();
   const [article,setArticle] = useState();
+  const { deleteProject } = useContext(UserContext);
   
+
+const deleteHandler = ( ) =>{
+  deleteProject(projectid)
+}
+
   useEffect(()=>{
           const fetchData = () =>{
           Api(null, "projects",`?id=eq.${projectid}`).then(data => setArticle(...data));
           }
       fetchData()
   },[])
-  useEffect(() => {
-  console.log("projects is nowr", article);   // runs on mount AND after setProjects
-}, [article]);
+
+
 
 
 if (article === undefined) return <p>Loading…</p>
+
 
 return(
   <><HeaderMenu/>
@@ -36,6 +43,8 @@ return(
           <p>
             {article.Article}
           </p>
+        <button  onClick={deleteHandler}>Delite this</button>
+        <Link  to={`/projects/edit/${projectid}`}><button>Edit this</button></Link>
       </div>
     </div>
   </div>

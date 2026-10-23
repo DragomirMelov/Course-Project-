@@ -25,7 +25,6 @@ const Contacts = () => {
     })
   }
 
-
   const submitLoginHandler = (e) =>{
       e.preventDefault();
     const formData = new FormData(e.target);
@@ -142,6 +141,7 @@ const Contacts = () => {
 
             {LoginOr ? Login : Register}
     <Link to="/create/project">createProject</Link>
+    <h1 onClick={setAuth.logout}>LOGOUT</h1>
 </div>
   </>
   )

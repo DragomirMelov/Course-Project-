@@ -2,7 +2,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 
-import { Routes , Route } from "react-router";
+import { Routes , Route, useNavigate } from "react-router";
 import Contacts from "./pages/Contacts";
 import Project from "./pages/Project";
 import Article from "./components/Article";
@@ -10,22 +10,57 @@ import { BlogPost } from "./components/BlogPost";
 import { useCallback, useMemo, useState } from "react";
 import { UserContext } from "./Context/userContext";
 import Api, { Auth } from "./utils/requester";
-import CreateProject from "./pages/CreateProject";
+import CreateProject from "./pages/Projects/CreateProject";
+import EditProject from "./pages/Projects/EditProject";
 
 
 
 function App() {
   const [auth, setAuth] = useState(null); 
-  const deliteProject = useCallback(async (Obj) => {
+    let navigate = useNavigate();
+
+
+
+  const logout = useCallback(async () => {
     const token = auth?.access_token;
     try {
-      const result = await Api(token, "projects", "", "POST", Obj);
+      const result = await Auth(token, "logout","POST");
+      return result; 
+    } catch (error) {
+      console.error(error);
+      throw error;   
+    }finally{
+      setAuth(null)
+      navigate("/");
+    }
+  }, [auth]);
+
+
+
+
+  const editProject = useCallback(async (gameid,Obj) => {
+    const token = auth?.access_token;
+    try {
+      const result = await Api(token, "projects", `?id=eq.${gameid}`, "PATCH",Obj);
       return result; // 👈 Return result so the component knows it worked
     } catch (error) {
       console.error(error);
       throw error;   // 👈 Throw error so the component can catch it
     }
   }, [auth]);
+
+  const deleteProject = useCallback(async (gameid) => {
+    const token = auth?.access_token;
+    try {
+      const result = await Api(token, "projects", `?id=eq.${gameid}`, "DELETE");
+      return result; // 👈 Return result so the component knows it worked
+    } catch (error) {
+      console.error(error);
+      throw error;   // 👈 Throw error so the component can catch it
+    }
+  }, [auth]);
+
+
   // 1. Optimized with useCallback
   // Depends on [auth] because it reads auth?.access_token
   const createProject = useCallback(async (Obj) => {
@@ -70,8 +105,11 @@ function App() {
     setAuth,
     SignupHandler,
     LoginHandler,
-    createProject
-  }), [auth, SignupHandler, LoginHandler, createProject]);
+    createProject,
+    deleteProject ,
+    editProject,
+    logout
+  }), [auth, SignupHandler, LoginHandler, createProject,deleteProject,editProject,logout]);
   return (
     <>
     <UserContext.Provider value={contextValue}>
@@ -83,8 +121,9 @@ function App() {
       <Route path="/contact" element={<Contacts/>}/>
       <Route path="/projects" element={<Project/>}/>
       <Route path="/projects/:projectid" element={<Article/>}/>
-      <Route path="/blogs/:blogpostid" element={<BlogPost/>}/>
+      <Route path="/projects/edit/:projectid" element={<EditProject/>}/>
       <Route path="/create/project" element={<CreateProject/>}/>
+      <Route path="/blogs/:blogpostid" element={<BlogPost/>}/>
     </Routes>
     </UserContext.Provider>
     </>

@@ -5,7 +5,7 @@ return (
     <>
               <li>
             <Link to={`/projects/${props.link}`}>
-              <img src={props.imageUrl} alt="" />
+              <img src={props.imageUrl} alt="" style={{ width: "380px", height: "217px" }} />
             </Link>
             <div>
               <h1>{props.title}</h1>

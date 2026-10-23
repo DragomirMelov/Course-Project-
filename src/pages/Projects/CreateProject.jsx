@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import HeaderMenu from '../components/HeaderMenu'
 
 
 
 
 
-import { UserContext } from '../Context/userContext';
+import { UserContext } from '../../Context/userContext';
+import HeaderMenu from '../../components/HeaderMenu';
 
 let ProjectObj ={
     title: "",
@@ -72,7 +72,7 @@ const submitHandler = (e) =>{
             placeholder="body of the PreView Component"
         />
         <textarea
-             style={{  height: "320px", }}
+            style={{  height: "320px", }}
             name="Article"
             cols={70}
             rows={30}

@@ -20,7 +20,27 @@ function App() {
     let navigate = useNavigate();
 
 
+  //func for account to give all post
+  const giveUserPosts = async () =>{
+        const token = auth?.access_token;
+        const userUuid = auth.user.id; 
+          if (!userUuid || !token) {
+            console.error("User not logged in");
+              return;
+          }
+        try {
+          // Remember to add `&order=created_at.desc` if you want them sorted!
+          const response = await Api(token, "projects", `?user_id=eq.${userUuid}&order=created_at.desc`);
+          console.log(response)
+          return await response; 
+      } catch (error) {
+        console.error(error);
+      }
+  }
 
+
+
+  //logout but the token is stell active need to be remove using setAuth(null)
   const logout = useCallback(async () => {
     const token = auth?.access_token;
     try {
@@ -61,8 +81,7 @@ function App() {
   }, [auth]);
 
 
-  // 1. Optimized with useCallback
-  // Depends on [auth] because it reads auth?.access_token
+
   const createProject = useCallback(async (Obj) => {
     const token = auth?.access_token;
     try {
@@ -74,8 +93,7 @@ function App() {
     }
   }, [auth]);
 
-  // 2. Optimized with useCallback
-  // Empty array [] because setAuth and Auth are stable
+
   const SignupHandler = useCallback(async (Obj) => {
     try {
       const result = await Auth("", "signup", "POST", Obj);
@@ -87,7 +105,7 @@ function App() {
     }
   }, []);
 
-  // 3. Optimized with useCallback + added try/catch!
+
   const LoginHandler = useCallback(async (Obj) => {
     try {
       const result = await Auth("", "token?grant_type=password", "POST", Obj);
@@ -99,7 +117,6 @@ function App() {
     }
   }, []);
 
-  // 4. Memoize the object passed to the Provider
   const contextValue = useMemo(() => ({
     auth,
     setAuth,

@@ -32,7 +32,6 @@ const Contacts = () => {
     const password =formData.get(`password`)
     const email =formData.get(`Email`)
     setAuth.LoginHandler({email,password})
-    
   }
     const Login = (
        <div id="body">
@@ -134,6 +133,8 @@ const Contacts = () => {
     </div>
   </div>
   )
+
+  
   return (
   <>
   <div id="page">

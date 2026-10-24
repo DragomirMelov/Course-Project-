@@ -20,7 +20,6 @@ if (body) {
     options.body = JSON.stringify(body);
     options.headers["Content-Type"] = "application/json";
 }
-console.log(options)
 const respones = await fetch(ApiUrl, options);
 
 if (!respones.ok) {

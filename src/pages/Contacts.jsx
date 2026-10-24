@@ -1,12 +1,15 @@
 import React, { useContext, useRef, useState } from 'react'
 import HeaderMenu from '../components/HeaderMenu'
 import { UserContext } from '../Context/userContext';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 
 const Contacts = () => {
     const [LoginOr, setLoginOr] = useState(true);
     const  setAuth  = useContext(UserContext);
+        const navigate = useNavigate();
+
+        //to delite this log
   console.log(setAuth)
 
   const submitRegisterHandler = (e) =>{
@@ -18,20 +21,28 @@ const Contacts = () => {
     const email = formData.get(`Email`)
     const message = formData.get(`message`)
 
-
+    try{
   setAuth.SignupHandler({
+      data: {
+      display_name: Name,},
       password,
       email,
+
     })
+  }catch(error){
+    alert(error)
+
+  }
+    navigate("/")
   }
 
   const submitLoginHandler = (e) =>{
       e.preventDefault();
     const formData = new FormData(e.target);
-        console.log(formData.get(`Name`))
+        const Name = formData.get(`Name`)
     const password =formData.get(`password`)
     const email =formData.get(`Email`)
-    setAuth.LoginHandler({email,password})
+    setAuth.LoginHandler({email,password,data: {display_name: Name,},})
   }
     const Login = (
        <div id="body">

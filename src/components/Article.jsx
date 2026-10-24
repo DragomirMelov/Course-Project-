@@ -22,14 +22,19 @@ const Article = (props) => {
 const submitHandlerCreateComment = async(e) =>{
         e.preventDefault();
         const formData = new FormData(e.target);
+
+        
+        if(!auth?.user?.id){alert("Register to comment")} 
+        
    const newCmmnent = {
       project_id: projectid,
-      author: auth.user.email,
+      author: auth.user.user_metadata.display_name,
       user_id: auth.user.id,
       text: formData.get(`text`),
    }
+    
        try {
-   await Api( auth?.access_token, "commentsprojects",``,"POST",newCmmnent);
+      await Api( auth?.access_token, "commentsprojects",``,"POST",newCmmnent);
       } catch (error) {
       console.error(error);
       throw error;   
@@ -58,10 +63,11 @@ const deleteHandler = ( ) =>{
 const user = auth?.user?.id; 
 
 const isOwner = user && user === article?.user_id;
-console.log(isOwner)
 if (article === undefined) return <p>Loading…</p>
 
 const Opt = (<><button className='monochrome-button' onClick={deleteHandler}>Delite this</button ><Link  to={`/projects/edit/${projectid}`}><button className='monochrome-button'>Edit this</button></Link></>)
+
+console.log(comments)
 return(
   <><HeaderMenu/>
 <div id="page">

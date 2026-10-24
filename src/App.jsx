@@ -48,6 +48,7 @@ function App() {
       return result; 
     } catch (error) {
       console.error(error);
+      alert(error);
       throw error;   
     }finally{
       setAuth(null)
@@ -64,6 +65,7 @@ function App() {
       const result = await Api(token, "projects", `?id=eq.${gameid}`, "PATCH",Obj);
       return result; // 👈 Return result so the component knows it worked
     } catch (error) {
+      alert(error);
       console.error(error);
       throw error;   // 👈 Throw error so the component can catch it
     }
@@ -75,6 +77,7 @@ function App() {
       const result = await Api(token, "projects", `?id=eq.${gameid}`, "DELETE");
       return result; // 👈 Return result so the component knows it worked
     } catch (error) {
+      alert(error);
       console.error(error);
       throw error;   // 👈 Throw error so the component can catch it
     }
@@ -88,6 +91,7 @@ function App() {
       const result = await Api(token, "projects", "", "POST", Obj);
       return result; // 👈 Return result so the component knows it worked
     } catch (error) {
+      alert(error);
       console.error(error);
       throw error;   // 👈 Throw error so the component can catch it
     }
@@ -100,7 +104,9 @@ function App() {
       setAuth(result);
       return result;
     } catch (error) {
+      
       console.error(error);
+      alert(error);
       throw error;
     }
   }, []);
@@ -113,6 +119,7 @@ function App() {
       return result;
     } catch (error) {
       console.error("Login failed:", error);
+      alert(error)
       throw error; // Important: lets the Login component show "Wrong password"
     }
   }, []);

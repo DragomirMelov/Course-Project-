@@ -5,7 +5,9 @@ const Comment = (props) => {
     <>
     <div className="mono-comment-card">
       <div className="mono-comment-header">
-        <span style={{color: "#ffffff" }}>{props.data}</span>
+
+        <h2 className='mono-comment-text'>{props.author}</h2>
+              <span style={{color: "#ffffff" }}>{props.data}</span>
       </div>
       <p className="mono-comment-text">
       {props.text}

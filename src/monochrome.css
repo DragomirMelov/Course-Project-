@@ -1,0 +1,51 @@
+        .monochrome-form-container {
+          max-width: 600px;
+          margin: 20px 0;
+          font-family: Arial, sans-serif;
+        }
+
+        .monochrome-textarea {
+          background-color: #ffffff;
+          color: #000000;
+          border: 1px solid #000000;
+          border-radius: 4px;
+          font-size: 16px;
+
+          resize: vertical; /* Allows user to resize up and down only */
+          box-sizing: border-box;
+          outline: none;
+          transition: box-shadow 0.2s ease;
+        }
+
+        /* Focus effect */
+        .monochrome-textarea:focus {
+          box-shadow: 0 0 0 2px #666666;
+        }
+
+        .monochrome-button {
+          display: block;
+          margin-top: 10px;
+          padding: 10px 20px;
+          background-color: #000000;
+          color: #ffffff;
+          border: 1px solid #ffffff;
+          border-radius: 4px;
+          font-size: 16px;
+          font-weight: bold;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        /* Hover effect */
+        .monochrome-button:hover {
+          background-color: #ffffff;
+          color: #000000;
+        }
+
+        /* Active (click) effect */
+        .monochrome-button:active {
+          transform: scale(0.98);
+        }
+
+		

@@ -1,12 +1,10 @@
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Blog from "./pages/Blog";
 
 import { Routes , Route, useNavigate } from "react-router";
 import Contacts from "./pages/Contacts";
 import Project from "./pages/Project";
 import Article from "./components/Article";
-import { BlogPost } from "./components/BlogPost";
 import { useCallback, useMemo, useState } from "react";
 import { UserContext } from "./Context/userContext";
 import Api, { Auth } from "./utils/requester";
@@ -21,22 +19,7 @@ function App() {
 
 
   //func for account to give all post
-  const giveUserPosts = async () =>{
-        const token = auth?.access_token;
-        const userUuid = auth.user.id; 
-          if (!userUuid || !token) {
-            console.error("User not logged in");
-              return;
-          }
-        try {
-          // Remember to add `&order=created_at.desc` if you want them sorted!
-          const response = await Api(token, "projects", `?user_id=eq.${userUuid}&order=created_at.desc`);
-          console.log(response)
-          return await response; 
-      } catch (error) {
-        console.error(error);
-      }
-  }
+
 
 
 
@@ -47,7 +30,6 @@ function App() {
       const result = await Auth(token, "logout","POST");
       return result; 
     } catch (error) {
-      console.error(error);
       alert(error);
       throw error;   
     }finally{
@@ -141,13 +123,11 @@ function App() {
       <Route path="*" element={<><h1>Not Faund</h1></>}/>
       <Route path="/" element={<Index/> }/>
       <Route path="/about" element={<About/>}/>
-      <Route path="/blog" element={<Blog/>}/>
       <Route path="/contact" element={<Contacts/>}/>
       <Route path="/projects" element={<Project/>}/>
       <Route path="/projects/:projectid" element={<Article/>}/>
       <Route path="/projects/edit/:projectid" element={<EditProject/>}/>
       <Route path="/create/project" element={<CreateProject/>}/>
-      <Route path="/blogs/:blogpostid" element={<BlogPost/>}/>
     </Routes>
     </UserContext.Provider>
     </>

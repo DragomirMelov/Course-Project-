@@ -59,6 +59,7 @@ if (!respones.ok) {
     const text = await respones.text().catch(() => "");
     throw new Error(`HTTP ${respones.status} ${ApiUrl}: ${text}`);
 }
+   if (respones.status === 204) return null; 
         return respones.json(); 
 
 }

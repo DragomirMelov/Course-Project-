@@ -48,4 +48,22 @@
           transform: scale(0.98);
         }
 
-		
+		.monochrome-box{
+          background-color: #000000;
+          border: 1px solid #ffffff;
+          border-radius: 20px;
+    }
+		.monochrome-box-menu{
+          background-color: #000000;
+          border: 1px solid #ffffff;
+          border-radius: 20px;
+    }
+    .monochrome-box-element{
+       cursor: pointer;
+             background-color: #696969;
+          border: 2px solid #ffffff;
+          border-radius: 35px;
+        margin: 2% !important;
+        padding: 5%,0,5%;
+        
+    }

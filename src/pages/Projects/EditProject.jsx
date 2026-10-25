@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import HeaderMenu from '../../components/HeaderMenu'
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Api from '../../utils/requester';
 import { UserContext } from '../../Context/userContext';
+import Footer from '../../components/Footer';
 
 const EditProject = () => {
   const {projectid} = useParams();
   const [article,setArticle] = useState();
         const {auth,editProject}   = useContext(UserContext);
+        const navigate = useNavigate();
+
 const submitHandler = (e) =>{
             e.preventDefault();
     const formData = new FormData(e.target);
@@ -23,7 +26,8 @@ const submitHandler = (e) =>{
         Article
     }
 
-    editProject(projectid,ProjectObj)
+    editProject(projectid,ProjectObj);
+    navigate("/projects");
 }
 
     
@@ -88,6 +92,7 @@ const submitHandler = (e) =>{
         </form>
       </div>
     </div>
+    <Footer/>
   </div>
     </div>
     </>

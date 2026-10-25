@@ -4,6 +4,7 @@ import { ProjectCard } from '../components/ProjectCard'
 import Api from '../utils/requester'
 
 import { UserContext } from '../Context/userContext';
+import Footer from '../components/Footer';
 
 const Project = () => {
   const [projects,setPropjects] = useState([]);
@@ -31,6 +32,7 @@ const Project = () => {
         </ul>
       </div>
     </div>
+    <Footer/>
   </div>
 </div>
 

@@ -1,13 +1,40 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import HeaderMenu from '../components/HeaderMenu'
 import { UserContext } from '../Context/userContext';
 import { Link, useNavigate } from 'react-router';
+import { Login } from '../components/auth/Login';
+import Register from '../components/auth/Register';
+import Api from '../utils/requester';
+import Footer from '../components/Footer';
+import { ProjectCard } from '../components/ProjectCard';
 
 
 const Contacts = () => {
     const [LoginOr, setLoginOr] = useState(true);
     const  setAuth  = useContext(UserContext);
-        const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [projects,setPropjects] = useState([]);
+
+
+        useEffect(() => {
+        const giveUserPosts = async () =>{
+        const token = setAuth.auth?.access_token;
+        const userUuid = setAuth.auth?.user?.id; 
+          if (!userUuid || !token) {
+            console.log("User not logged in");
+              return;
+          }
+        try {
+          // Remember to add `&order=created_at.desc` if you want them sorted!
+          Api(token, "projects", `?user_id=eq.${userUuid}&order=created_at.desc`).then(Data => setPropjects(Data));
+
+      } catch (error) {
+        console.error(error);
+      }
+  }
+giveUserPosts()
+        },[setAuth.auth?.access_token])
+
 
         //to delite this log
   console.log(setAuth)
@@ -44,119 +71,53 @@ const Contacts = () => {
     const email =formData.get(`Email`)
     setAuth.LoginHandler({email,password,data: {display_name: Name,},})
   }
-    const Login = (
-       <div id="body">
-    <div className="header">
-      <div className="contact">
-        <h1>login</h1>
-              <h1 onClick={()=>{setLoginOr(false)}} style={{  
-  backgroundColor: "#3c0f38",
-  color: "#ffffff",
-  cursor: "pointer",
-  display: "block",
-  float: "right",
-  fontFamily: "Arial",
-  fontSize: "14px",
-  fontWeight: "normal",
-  height: "32px",
-  lineHeight: "31px",
-  margin: 0,
-  padding: 0,
-  textAlign: "center",
-  textTransform: "uppercase",
-  width: "125px"}}>Register</h1>
+ 
 
-        <form  onSubmit={submitLoginHandler} >
-          <input
-            type="text"
-            name="Name"
-            placeholder="Name"
-          />
-          <input
-            type="email"
-            name="Email"
-            placeholder="Email Address"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-          <input type="submit" defaultValue="Send" id="submit" />
-      </form>
+
+  if(setAuth.auth){return(
+    <>
+      <div id="page">
+    <HeaderMenu/>
+      <div id="body">
+         <div className="header">
+          <div className='monochrome-box-menu'>
+        <Link to="/create/project"><h2 className='monochrome-box-element'>createProject</h2></Link>
+        <h2 onClick={setAuth.logout} className='monochrome-box-element'>LOGOUT</h2>
+          </div>
+          <div>
+        <h1>your posts</h1>
+        <ul>
+    {!projects || projects.length === 0 ? (<div className='monochrome-box'><h1>No posts found</h1><h1>Please create posts.</h1></div>): ( projects.map(Project => <ProjectCard key={Project.id} title={Project.title} Paragraph={Project.body} imageUrl={Project.image} link={Project.id} />))}
+          </ul>
+          </div>
+
       </div>
-    </div>
-  </div>
-    )
-  const Register = (
- <div id="body">
-    <div className="header">
-      <div className="contact">
-
-        <h1>Register</h1>
-        <h1 onClick={()=>{setLoginOr(true)}}  style={{  
-  backgroundColor: "#3c0f38",
-  color: "#ffffff",
-  cursor: "pointer",
-  display: "block",
-  float: "right",
-  fontFamily: "Arial",
-  fontSize: "14px",
-  fontWeight: "normal",
-  height: "32px",
-  lineHeight: "31px",
-  margin: 0,
-  padding: 0,
-  textAlign: "center",
-  textTransform: "uppercase",
-  width: "125px"}}>Login</h1>
-
-        <form onSubmit={submitRegisterHandler}>
-          <input
-            type="text"
-            name="Name"
-            placeholder="Name"
-          />
-          <input
-            type="text"
-            name="Email"
-            placeholder="Email Address"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-          <input
-            type="password"
-            name="repeat-password"
-            placeholder="repeat password"
-          />
-          <textarea
-            name="message"
-            cols={50}
-            rows={7}
-            placeholder="describe yourself"
-          />
-          <input type="submit" defaultValue="Send" id="submit"  />
-        </form>
       </div>
+            <Footer/>
     </div>
-  </div>
-  )
-
-  
+    </>
+  )}
+  else{
   return (
   <>
   <div id="page">
     <HeaderMenu/>
-
-            {LoginOr ? Login : Register}
-    <Link to="/create/project">createProject</Link>
-    <h1 onClick={setAuth.logout}>LOGOUT</h1>
+        
+        {LoginOr ? (
+          <Login 
+            setLoginOr={setLoginOr} 
+            submitLoginHandler={submitLoginHandler} 
+          />
+        ) : (
+          <Register
+            setLoginOr={setLoginOr} 
+            submitRegisterHandler={submitRegisterHandler} 
+          />
+        )}
+        <Footer/>
 </div>
   </>
-  )
+  )}
 }
 
 export default Contacts

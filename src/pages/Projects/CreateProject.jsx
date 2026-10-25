@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
-
-
-
-
-
 import { UserContext } from '../../Context/userContext';
 import HeaderMenu from '../../components/HeaderMenu';
+import { useNavigate } from 'react-router';
+import Footer from '../../components/Footer';
 
 let ProjectObj ={
     title: "",
@@ -18,7 +15,7 @@ let ProjectObj ={
 
 
 const CreateProject = () => {
-
+        const navigate = useNavigate();
 
   const { createProject } = useContext(UserContext);
 
@@ -37,8 +34,8 @@ const submitHandler = (e) =>{
         body,
         Article
     }
-
     createProject(ProjectObj)
+    navigate("/projects")
 }
 
 
@@ -82,6 +79,7 @@ const submitHandler = (e) =>{
         </form>
       </div>
     </div>
+    <Footer/>
   </div>
     </div>
     </>

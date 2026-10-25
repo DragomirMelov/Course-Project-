@@ -8,7 +8,7 @@ return (
           <ul>
             <li>
               <h1>FEATURED POSTS</h1>
-              <Link to="/singlepost/1">
+              <Link to="/projects/1">
                 <img src="/src/assets/artwork/moon-satellite.jpg" alt="" />
               </Link>
               <h2>SOYUZ TMA-M</h2>
@@ -18,14 +18,14 @@ return (
               <h1>RECENT POSTS</h1>
               <ul>
                 <li>
-                  <Link to="/singlepost/1">
+                  <Link to="/projects/1">
                     <img src="/src/assets/artwork/alien-life.jpg" alt="" />
                   </Link>
                   <h2>ALIEN LIFE</h2>
                   <span>FEBRUARY 3, 2023</span>
                 </li>
                 <li>
-                  <Link to="/singlepost/1">
+                  <Link to="/projects/">
                     <img src="/src/assets/artwork/galaxy.jpg" alt="" />
                   </Link>
                   <h2>THE GALAXY</h2>

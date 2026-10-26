@@ -1,5 +1,5 @@
 # space project sharing system
-
+**Application Category / Topic: Project Catalog
 **Main Purpose:** The application is designed for space enthusiasts to share, catalog, and discuss space-related projects and articles. It provides a central hub where users can read about various space missions, create their own articles, and interact with the community through comments.
 
 Demo - Link ->
@@ -11,26 +11,6 @@ npm i
 
 npm run dev
 
-### Navigation & Public Access
-The top navigation menu consists of **Home**, **About**, **Projects**, and **Account**. 
-* **Home** and **About** are static pages that contain links directing users to the Projects catalog.
-* In the **Projects** section, guests can browse and read project articles. However, the option to leave comments is restricted and requires registration.
-
-### Authentication & Account
-* The **Account** option contains an integrated Login/Register page. It features a toggle button (located at the bottom, over the footer) to switch between the Login and Register forms.
-
-### Logged-in User Experience
-* Once logged into the system, the a menu updates to include a button for **Creating a Project**.
-* The catalog displays all articles. If an article was written by the currently logged-in user, it features two additional options: **Delete** and **Edit**.
-* Logged-in users are also permitted to write comments under articles written by other users.
-
-### Catalog & Refresh Feature
-* In the **Projects** catalog page, there is a **Refresh button** located at the top. This allows users to manually trigger a data re-fetch (a "soft refresh") in case the UI does not automatically display the most recent information. This is implemented using React state (`refreshKey`) without causing a hard page reload, ensuring the user's session is preserved.
-* 
-###  User Access & Permissions
-**Guest (Not Authenticated):**
-*   **Available pages / routes:** Home (`/`), About (`/about`), Contacts (`/contact`), Projects Catalog (`/projects`), Project Details (`/projects/:projectid`), Login/Register (`/contact`).
-*   **Public data shown:** Guests can browse and read all project articles and comments left by other users.
 
 *Authenticated User:**
 *   **Main sections / pages:** In addition to guest access, authenticated users get access to the Create Project page (`/create/project`) and Edit Project page (`/projects/edit/:id`).
@@ -42,9 +22,17 @@ The top navigation menu consists of **Home**, **About**, **Projects**, and **Acc
 *   **App Load:** When the app loads, the `UserContext` initializes with a `null` authentication state.
 *   **Auth Check:** The app uses Supabase Auth. When a user logs in, the JWT token is received and stored in the Context.
    
+**What happens on successful login or registration:**
+*   **Data Handling:** Upon successful authentication, Supabase returns a session object containing the `access_token` (JWT) and user data. The `LoginHandler` or `SignupHandler` receives this object.
+*   **Global State Update:** The `setAuth` function saves this session object into the global `UserContext`.
+*   **UI Reactivity:** Because the `auth` state in Context changes, React automatically re-renders the `HeaderMenu`. The UI instantly updates to show the user's profile, a "Create Project" button, and the "Logout" option instead of "Login".
+*   **Routing:** The app uses the `useNavigate` hook to programmatically redirect the user. On Login, they are sent to the home page (`/`). On Registration, they are typically shown a success message and redirected to the Login page.
 
-**Session Persistence:**
-*   The user session is stored in React Context (`UserContext.jsx`). Supabase automatically handles the local storage of the session token, meaning a page refresh will not log the user out.
+**What happens on logout:**
+*   **Backend Session Invalidation:** A POST request is sent to the Supabase `/auth/v1/logout` endpoint using the user's active JWT. This invalidates the session on the server side.
+*   **State Clearing:** The `finally` block of the logout function executes `setAuth(null)`, completely wiping the user's data from the React `UserContext`.
+*   **UI Reset:** The Context update triggers a re-render. The "Create Project" and "Logout" buttons disappear, and the UI reverts to its unauthenticated state (showing "Login/Register"). 
+*   **Routing:** The `navigate('/')` hook redirects the user back to the Home page, ensuring they are no longer on any protected routes.
 
 ### 4. Routing Structure
 **Route Guards Logic:**
@@ -60,6 +48,22 @@ The top navigation menu consists of **Home**, **About**, **Projects**, and **Acc
 *   **Parameterized Routes:** Two routes use URL parameters: `/projects/:projectid` (to view a specific project) and `/projects/edit/:projectid` (to edit a specific project).
 *   **Nested Routing:** We use `<Outlet />` for layout consistency (Header and Footer remain visible while the inner pages change).
 
+
+### Authentication & Account
+* The **Account** option contains an integrated Login/Register page. It features a toggle button (located at the bottom, over the footer) to switch between the Login and Register forms.
+
+### Logged-in User Experience
+* Once logged into the system, the a menu updates to include a button for **Creating a Project**.
+* The catalog displays all articles. If an article was written by the currently logged-in user, it features two additional options: **Delete** and **Edit**.
+* Logged-in users are also permitted to write comments under articles written by other users.
+
+### Catalog & Refresh Feature
+* In the **Projects** catalog page, there is a **Refresh button** located at the top. This allows users to manually trigger a data re-fetch (a "soft refresh") in case the UI does not automatically display the most recent information. This is implemented using React state (`refreshKey`) without causing a hard page reload, ensuring the user's session is preserved.
+ 
+###  User Access & Permissions
+**Guest (Not Authenticated):**
+*   **Available pages / routes:** Home (`/`), About (`/about`), Contacts (`/contact`), Projects Catalog (`/projects`), Project Details (`/projects/:projectid`), Login/Register (`/contact`).
+*   **Public data shown:** Guests can browse and read all project articles and comments left by other users.
 
 ### 5. List → Details Flow
 **Catalog / List Page:**
@@ -86,7 +90,7 @@ The top navigation menu consists of **Home**, **About**, **Projects**, and **Acc
 
 **Delete:**
 *   The author clicks "Delete" on the details page. A DELETE request is sent to Supabase. The user is then redirected back to the Catalog. The database uses `ON DELETE CASCADE` to automatically delete related comments.
-*   
+   
 
 ### 8. Forms & Validation
 **Forms Used:**

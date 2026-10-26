@@ -1,4 +1,4 @@
-#space project sharing system
+# space project sharing system
 A full-stack React application for creating, managing, and sharing space projects. 
 
 Demo - Link ->
@@ -42,6 +42,8 @@ The top navigation menu consists of **Home**, **About**, **Projects**, and **Acc
 
 
 ## 📁 Project Structure
+
+```text
 src/
 ├── assets/                 # Static files (images, artwork, etc.)
 ├── components/             # Reusable UI components
@@ -60,6 +62,7 @@ src/
 ├── Context/                # React Context API
 │   └── userContext.jsx     # Global Auth state provider
 ├── pages/                  # Main page views (Routed components)
+│   ├── Auth/               # Login/Register wrapper page
 │   ├── Projects/           # Project-related pages
 │   │   ├── CreateProject.jsx
 │   │   └── EditProject.jsx

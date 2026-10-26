@@ -10,7 +10,7 @@ npm i
 npm run dev
 
 
-Functional Guide 
+#Functional Guide 
 Navigation & Public Access:
 The top navigation menu consists of Home, About, Projects, and Account.
 Home and About are static pages that contain links directing users to the Projects catalog.

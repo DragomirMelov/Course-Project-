@@ -1,7 +1,7 @@
 #space project sharing system
 A full-stack React application for creating, managing, and sharing space projects. 
 
-- Link ->
+Demo - Link ->
 
 ##Setup & Config
 git clone https://github.com/DragomirMelov/Course-Project-

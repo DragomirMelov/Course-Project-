@@ -19,12 +19,10 @@ function App() {
     let navigate = useNavigate();
 
 
-  //func for account to give all post
 
 
 
 
-  //logout but the token is stell active need to be remove using setAuth(null)
   const logout = useCallback(async () => {
     const token = auth?.access_token;
     try {
@@ -42,27 +40,27 @@ function App() {
 
 
 
-  const editProject = useCallback(async (gameid,Obj) => {
+  const editProject = useCallback(async (id,Obj) => {
     const token = auth?.access_token;
     try {
-      const result = await Api(token, "projects", `?id=eq.${gameid}`, "PATCH",Obj);
-      return result; // 👈 Return result so the component knows it worked
+      const result = await Api(token, "projects", `?id=eq.${id}`, "PATCH",Obj);
+      return result; 
     } catch (error) {
       alert(error);
       console.error(error);
-      throw error;   // 👈 Throw error so the component can catch it
+      throw error;   
     }
   }, [auth]);
 
-  const deleteProject = useCallback(async (gameid) => {
+  const deleteProject = useCallback(async (id) => {
     const token = auth?.access_token;
     try {
-      const result = await Api(token, "projects", `?id=eq.${gameid}`, "DELETE");
-      return result; // 👈 Return result so the component knows it worked
+      const result = await Api(token, "projects", `?id=eq.${id}`, "DELETE");
+      return result; 
     } catch (error) {
       alert(error);
       console.error(error);
-      throw error;   // 👈 Throw error so the component can catch it
+      throw error;   
     }
   }, [auth]);
 
@@ -72,11 +70,11 @@ function App() {
     const token = auth?.access_token;
     try {
       const result = await Api(token, "projects", "", "POST", Obj);
-      return result; // 👈 Return result so the component knows it worked
+      return result; 
     } catch (error) {
       alert(error);
       console.error(error);
-      throw error;   // 👈 Throw error so the component can catch it
+      throw error;   
     }
   }, [auth]);
 
@@ -103,7 +101,7 @@ function App() {
     } catch (error) {
       console.error("Login failed:", error);
       alert(error)
-      throw error; // Important: lets the Login component show "Wrong password"
+      throw error; 
     }
   }, []);
 

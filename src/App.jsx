@@ -10,6 +10,7 @@ import { UserContext } from "./Context/userContext";
 import Api, { Auth } from "./utils/requester";
 import CreateProject from "./pages/Projects/CreateProject";
 import EditProject from "./pages/Projects/EditProject";
+import RouteGuards from "./components/auth/RouteGuards";
 
 
 
@@ -120,14 +121,17 @@ function App() {
     <>
     <UserContext.Provider value={contextValue}>
     <Routes>
-      <Route path="*" element={<><h1>Not Faund</h1></>}/>
+      <Route path="*" element={<><h1>Not a Page</h1></>}/>
       <Route path="/" element={<Index/> }/>
       <Route path="/about" element={<About/>}/>
       <Route path="/contact" element={<Contacts/>}/>
       <Route path="/projects" element={<Project/>}/>
       <Route path="/projects/:projectid" element={<Article/>}/>
+      <Route element={<RouteGuards/>}>
       <Route path="/projects/edit/:projectid" element={<EditProject/>}/>
       <Route path="/create/project" element={<CreateProject/>}/>
+      </Route>
+
     </Routes>
     </UserContext.Provider>
     </>

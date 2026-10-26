@@ -67,7 +67,6 @@ if (article === undefined) return <p>Loading…</p>
 
 const Opt = (<><button className='monochrome-button' onClick={deleteHandler}>Delite this</button ><Link  to={`/projects/edit/${projectid}`}><button className='monochrome-button'>Edit this</button></Link></>)
 
-console.log(comments)
 return(
   <><HeaderMenu/>
 <div id="page">

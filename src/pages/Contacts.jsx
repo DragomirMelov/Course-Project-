@@ -25,7 +25,6 @@ const Contacts = () => {
               return;
           }
         try {
-          // Remember to add `&order=created_at.desc` if you want them sorted!
           Api(token, "projects", `?user_id=eq.${userUuid}&order=created_at.desc`).then(Data => setPropjects(Data));
 
       } catch (error) {
@@ -36,8 +35,6 @@ giveUserPosts()
         },[setAuth.auth?.access_token])
 
 
-        //to delite this log
-  console.log(setAuth)
 
   const submitRegisterHandler = (e) =>{
       e.preventDefault();
@@ -46,7 +43,13 @@ giveUserPosts()
     const password = formData.get(`password`)
     const repeat_password = formData.get(`repeat-password`)
     const email = formData.get(`Email`)
-    const message = formData.get(`message`)
+    if(!Name){return alert("write your name")}
+    if(!email){return alert("write your email ")}
+    if(!password){return alert("write your password")}
+    if ((password.length || 0) < 6) {
+          return alert("The password must be 6 or more characters.");
+        }
+  if(repeat_password !== password){return alert("passwords do not match")}
 
     try{
   setAuth.SignupHandler({
@@ -66,13 +69,14 @@ giveUserPosts()
   const submitLoginHandler = (e) =>{
       e.preventDefault();
     const formData = new FormData(e.target);
-        const Name = formData.get(`Name`)
     const password =formData.get(`password`)
     const email =formData.get(`Email`)
-    setAuth.LoginHandler({email,password,data: {display_name: Name,},})
+    if ((password.length || 0) < 6) {
+          return alert("The password must be 6 or more characters.");
+        }
+    setAuth.LoginHandler({email,password})
   }
  
-
 
   if(setAuth.auth){return(
     <>
@@ -82,9 +86,10 @@ giveUserPosts()
          <div className="header">
           <div className='monochrome-box-menu'>
         <Link to="/create/project"><h2 className='monochrome-box-element'>createProject</h2></Link>
-        <h2 onClick={setAuth.logout} className='monochrome-box-element'>LOGOUT</h2>
+        <button onClick={setAuth.logout} className='monochrome-box-element'>LOGOUT</button>
           </div>
           <div>
+        <h2>Hello {setAuth.auth.user.user_metadata.display_name}</h2>
         <h1>your posts</h1>
         <ul>
     {!projects || projects.length === 0 ? (<div className='monochrome-box'><h1>No posts found</h1><h1>Please create posts.</h1></div>): ( projects.map(Project => <ProjectCard key={Project.id} title={Project.title} Paragraph={Project.body} imageUrl={Project.image} link={Project.id} />))}
@@ -102,18 +107,43 @@ giveUserPosts()
   <>
   <div id="page">
     <HeaderMenu/>
-        
+        <div className='body'>
+          <div className='header'>
         {LoginOr ? (
+          <>
           <Login 
             setLoginOr={setLoginOr} 
             submitLoginHandler={submitLoginHandler} 
           />
+            <button 
+            onClick={() => setLoginOr(false)} 
+            style={{  
+              width: "100%"
+            }}
+            className='monochrome-button '
+          >
+          Register
+          </button>
+          </>
         ) : (
+          <>
           <Register
             setLoginOr={setLoginOr} 
             submitRegisterHandler={submitRegisterHandler} 
           />
+                    <button 
+            onClick={() => setLoginOr(true)} 
+            style={{  
+              width: "100%"
+            }}
+            className='monochrome-button'
+          >
+            Login
+          </button>
+          </>
         )}
+        </div>
+        </div>
         <Footer/>
 </div>
   </>

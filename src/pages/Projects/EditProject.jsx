@@ -27,7 +27,7 @@ const submitHandler = (e) =>{
     }
 
     editProject(projectid,ProjectObj);
-    navigate("/projects");
+    navigate("/projects" ,{ state: { refresh: Date.now() } });
 }
 
     

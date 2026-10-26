@@ -25,7 +25,7 @@ return (
                   <span>FEBRUARY 3, 2023</span>
                 </li>
                 <li>
-                  <Link to="/projects/">
+                  <Link to="/projects/17">
                     <img src="/src/assets/artwork/galaxy.jpg" alt="" />
                   </Link>
                   <h2>THE GALAXY</h2>

@@ -35,7 +35,7 @@ const submitHandler = (e) =>{
         Article
     }
     createProject(ProjectObj)
-    navigate("/projects")
+    navigate("/projects",{ state: { refresh: Date.now() } })
 }
 
 

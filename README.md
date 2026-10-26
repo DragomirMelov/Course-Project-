@@ -1,16 +1,20 @@
-Course Project
-writing about space
+
+space project sharing system
+
+
 A full-stack React application for creating, managing, and sharing space projects. 
 Built with React, React Router, and Supabase. 
 
 
+
+
 - Link ->
+
 
 -Event Board
 
-Functional Guide (Required):
+Functional Guide 
 ## 🚀 Features
-
 - **User Authentication:** Secure login and registration using Supabase Auth.
 - **Create & Edit:** Dynamic forms to add new projects and edit existing ones.
 - **Project Catalog:** View all projects in a grid layout fetched from the database.

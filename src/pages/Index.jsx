@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-import Header from "../components/Header"
 import HeaderMenu from "../components/HeaderMenu"
 
 const Index = () => {
@@ -45,8 +44,9 @@ const Index = () => {
       <div>
         <h1>OUR MISSION</h1>
         <p>
-          This website template has been designed by Free Website Templates for
-          you, for free. You can replace all this text with your own text.
+      Our mission is to create a centralized hub for space exploration enthusiasts. 
+      We provide a platform where you can document, share, and discover the most 
+      ambitious projects in astrophysics and space travel.
         </p>
       </div>
     </div>

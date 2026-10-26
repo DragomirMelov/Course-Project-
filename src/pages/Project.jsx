@@ -5,23 +5,25 @@ import Api from '../utils/requester'
 
 import { UserContext } from '../Context/userContext';
 import Footer from '../components/Footer';
+import { useLocation } from 'react-router';
 
 const Project = () => {
   const [projects,setPropjects] = useState([]);
   const { auth } = useContext(UserContext);
           const [refreshKey, setRefreshKey] = useState(0);
+          const location = useLocation();
+
 
           const softRefresh = () => {
             setRefreshKey(prev => prev + 1); // Trigger re-render
           };
-
   const token = auth?.access_token;
     useEffect(() => {
       const fetchData = () =>{
     Api(token, "projects","?order=created_at.desc ").then(data => setPropjects(data));
     }
       fetchData()
-    },[refreshKey])
+    },[refreshKey, location.pathname,token,location.state])
 
 
   return (

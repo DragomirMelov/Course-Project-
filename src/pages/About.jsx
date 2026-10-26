@@ -8,66 +8,50 @@ const About = () => {
   <div id="body" className="about">
     <div className="header">
       <div>
-        <h1>About</h1>
-        <h2>We Have Free Templates for Everyone</h2>
+        <h1>About The Mission</h1>
+        <h2>Exploring the Final Frontier</h2>
         <p>
-          Our website templates are created with inspiration, checked for
-          quality and originality and meticulously sliced and coded. What’s
-          more, they’re absolutely free! You can do a lot with them. You can
-          modify them. You can use them to design websites for clients, so long
-          as you agree with the{" "}
-          <a href="https://freewebsitetemplates.com/about/terms/">
-            Terms of Use
-          </a>
-          . You can even remove all our links if you want to.
+              Welcome to our Space Exploration Hub. We are dedicated to cataloging, 
+              sharing, and discussing the most ambitious projects in modern astrophysics 
+              and space travel. Whether you are tracking the progress of the Mars rovers, 
+              studying the James Webb Telescope, or following the Artemis missions, 
+              you will find it here.
         </p>
       </div>
     </div>
     <div className="body">
       <div>
         <img src="/src/assets/artwork/earth-satellite.jpg" alt="" />
-        <h2>We Have More Templates for You</h2>
+        <h2>Built by Enthusiasts, for Enthusiasts</h2>
         <p>
-          Looking for more templates? Just browse through all our{" "}
-          <a href="https://freewebsitetemplates.com/">Free Website Templates</a>{" "}
-          and find what you’re looking for. But if you don’t find any website
-          template you can use, you can try our{" "}
-          <a href="https://freewebsitetemplates.com/freewebdesign/">
-            Free Web Design
-          </a>{" "}
-          service and tell us all about it. Maybe you’re looking for something
-          different, something special. And we love the challenge of doing
-          something different and something special.
+     Our platform is powered by a community of astronomers, engineers, and 
+              space lovers. We believe that knowledge about our universe should be 
+              accessible to everyone. You can create your own projects, document 
+              historical missions, and share your insights with a global network of 
+              like-minded individuals. 
         </p>
       </div>
     </div>
     <div className="footer">
       <div>
         <img src="/src/assets/artwork/space-shuttle.png" alt="" />
-        <h2>Be Part of Our Community</h2>
+        <h2>Join the Crew</h2>
         <p>
-          If you’re experiencing issues and concerns about this website
-          template, join the discussion{" "}
-          <a href="https://freewebsitetemplates.com/forums/">on our forum</a>{" "}
-          and meet other people in the community who share the same interests
-          with you.
+              Do you have a passion for space? Register an account and start 
+              contributing today. Add your own articles, upload mission data, and 
+              participate in discussions. The universe is vast, and we are just 
+              beginning to scratch the surface of what we can achieve together.
         </p>
       </div>
     </div>
     <div className="section">
       <div>
-        <h2>Template Details</h2>
+        <h2>System Information</h2>
         <p>
-          Design Version 1. Code version 3. Website Template details, discussion
-          and updates for this{" "}
-          <a href="https://freewebsitetemplates.com/discuss/spacescience/">
-            {" "}
-            Space Science Website Template
-          </a>
-          . Website Template design by{" "}
-          <a href="https://freewebsitetemplates.com/">Free Website Templates</a>
-          . Please feel free to remove some or all the text and links of this
-          page and replace it with your own About content.
+              Space Hub Version 2.0. Built with React, Vite, and Supabase. 
+              All user-generated content is protected by Row Level Security (RLS). 
+              For API documentation, system status, and database schemas, please 
+              contact the core development team.
         </p>
       </div>
     </div>

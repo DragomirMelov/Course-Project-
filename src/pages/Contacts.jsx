@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import   { useContext, useEffect,   useState } from 'react'
 import HeaderMenu from '../components/HeaderMenu'
 import { UserContext } from '../Context/userContext';
 import { Link, useNavigate } from 'react-router';
@@ -11,15 +11,18 @@ import { ProjectCard } from '../components/ProjectCard';
 
 const Contacts = () => {
     const [LoginOr, setLoginOr] = useState(true);
-    const  setAuth  = useContext(UserContext);
+    const  AuthObj  = useContext(UserContext);
     const navigate = useNavigate();
     const [projects,setPropjects] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
 
 
         useEffect(() => {
         const giveUserPosts = async () =>{
-        const token = setAuth.auth?.access_token;
-        const userUuid = setAuth.auth?.user?.id; 
+        const token = AuthObj.auth?.access_token;
+        const userUuid = AuthObj.auth?.user?.id; 
           if (!userUuid || !token) {
             console.log("User not logged in");
               return;
@@ -32,7 +35,7 @@ const Contacts = () => {
       }
   }
 giveUserPosts()
-        },[setAuth.auth?.access_token])
+        },[AuthObj.auth?.access_token])
 
 
 
@@ -52,7 +55,7 @@ giveUserPosts()
   if(repeat_password !== password){return alert("passwords do not match")}
 
     try{
-  setAuth.SignupHandler({
+  AuthObj.SignupHandler({
       data: {
       display_name: Name,},
       password,
@@ -63,7 +66,6 @@ giveUserPosts()
     alert(error)
 
   }
-    navigate("/")
   }
 
   const submitLoginHandler = (e) =>{
@@ -74,11 +76,11 @@ giveUserPosts()
     if ((password.length || 0) < 6) {
           return alert("The password must be 6 or more characters.");
         }
-    setAuth.LoginHandler({email,password})
+    AuthObj.LoginHandler({email,password})
   }
  
 
-  if(setAuth.auth){return(
+  if(AuthObj.auth){return(
     <>
       <div id="page">
     <HeaderMenu/>
@@ -86,10 +88,10 @@ giveUserPosts()
          <div className="header">
           <div className='monochrome-box-menu'>
         <Link to="/create/project"><h2 className='monochrome-box-element'>createProject</h2></Link>
-        <button onClick={setAuth.logout} className='monochrome-box-element'>LOGOUT</button>
+        <button onClick={AuthObj.logout} className='monochrome-box-element'>LOGOUT</button>
           </div>
           <div>
-        <h2>Hello {setAuth.auth.user.user_metadata.display_name}</h2>
+        <h2>Hello {AuthObj.auth.user.user_metadata.display_name}</h2>
         <h1>your posts</h1>
         <ul>
     {!projects || projects.length === 0 ? (<div className='monochrome-box'><h1>No posts found</h1><h1>Please create posts.</h1></div>): ( projects.map(Project => <ProjectCard key={Project.id} title={Project.title} Paragraph={Project.body} imageUrl={Project.image} link={Project.id} />))}
@@ -112,7 +114,8 @@ giveUserPosts()
         {LoginOr ? (
           <>
           <Login 
-            setLoginOr={setLoginOr} 
+            LoginPassword={setPassword} 
+            LoginEmail={setEmail}
             submitLoginHandler={submitLoginHandler} 
           />
             <button 

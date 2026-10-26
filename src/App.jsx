@@ -56,6 +56,7 @@ function App() {
     const token = auth?.access_token;
     try {
       const result = await Api(token, "projects", `?id=eq.${id}`, "DELETE");
+      navigate("/projects")
       return result; 
     } catch (error) {
       alert(error);

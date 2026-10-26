@@ -1,16 +1,17 @@
 #space project sharing system
 A full-stack React application for creating, managing, and sharing space projects. 
 
-
 - Link ->
 
-#Setup & Config
+##Setup & Config
 git clone https://github.com/DragomirMelov/Course-Project-
+
 npm i
+
 npm run dev
 
 
-#Functional Guide 
+##Functional Guide 
 Navigation & Public Access:
 The top navigation menu consists of Home, About, Projects, and Account.
 Home and About are static pages that contain links directing users to the Projects catalog.

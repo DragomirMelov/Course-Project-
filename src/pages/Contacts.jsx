@@ -18,7 +18,6 @@ const Contacts = () => {
   const [password, setPassword] = useState("");
 
 
-
         useEffect(() => {
         const giveUserPosts = async () =>{
         const token = AuthObj.auth?.access_token;
@@ -70,9 +69,6 @@ giveUserPosts()
 
   const submitLoginHandler = (e) =>{
       e.preventDefault();
-    const formData = new FormData(e.target);
-    const password =formData.get(`password`)
-    const email =formData.get(`Email`)
     if ((password.length || 0) < 6) {
           return alert("The password must be 6 or more characters.");
         }

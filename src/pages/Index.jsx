@@ -9,7 +9,7 @@ const Index = () => {
   <div id="body" className="home">
     <div className="header">
       <div>
-        <img src="/src/assets/artwork/satellite.png" alt="" className="satellite" />
+        <img src="/artwork/satellite.png" alt="" className="satellite" />
         <h1>SOYUZ TMA-M</h1>
         <h2>SPACECRAFT</h2>
         <Link to="/projects" className="more">
@@ -19,22 +19,22 @@ const Index = () => {
         <ul>
           <li>
             <Link to="/projects">
-              <img src="/src/assets/artwork/project-image1.jpg" alt="" />
+              <img src="/artwork/project-image1.jpg" alt="" />
             </Link>
           </li>
           <li>
             <Link to="/projects">
-              <img src="/src/assets/artwork/project-image2.jpg" alt="" />
+              <img src="/artwork/project-image2.jpg" alt="" />
             </Link>
           </li>
           <li>
             <Link to="/projects">
-              <img src="/src/assets/artwork/project-image3.jpg" alt="" />
+              <img src="/artwork/project-image3.jpg" alt="" />
             </Link>
           </li>
           <li>
             <Link to="/projects">
-              <img src="/src/assets/artwork/project-image4.jpg" alt="" />
+              <img src="/artwork/project-image4.jpg" alt="" />
             </Link>
           </li>
         </ul>
@@ -56,7 +56,7 @@ const Index = () => {
           <li>
             <h1>FEATURED VIDEO</h1>
             <a href="https://www.youtube.com/watch?v=zSiHa7Y5iDo">
-              <img src="/src/assets/artwork/mars-rover.jpg" alt="" />
+              <img src="/artwork/mars-rover.jpg" alt="" />
               <span />
             </a>
           </li>
@@ -65,7 +65,7 @@ const Index = () => {
             <ul>
               <li>
                 <Link to="/blog">
-                  <img src="/src/assets/artwork/finding-planet.jpg" alt="" />
+                  <img src="/artwork/finding-planet.jpg" alt="" />
                 </Link>
                 <h1>FINDING PLANET X-123</h1>
                 <span>FEBRUARY 6, 2023</span>
@@ -75,7 +75,7 @@ const Index = () => {
               </li>
               <li>
                 <Link to="/blog">
-                  <img src="/src/assets/artwork/new-satellitedish.jpg" alt="" />
+                  <img src="/artwork/new-satellitedish.jpg" alt="" />
                 </Link>
                 <h1>NEW SATELLITE DISH</h1>
                 <span>FEBRUARY 3, 2023</span>

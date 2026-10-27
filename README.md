@@ -1,21 +1,28 @@
 # space project sharing system
-**Application Category / Topic: Project Catalog
-**Main Purpose:** The application is designed for space enthusiasts to share, catalog, and discuss space-related projects and articles. It provides a central hub where users can read about various space missions, create their own articles, and interact with the community through comments.
+** Application Category / Topic: Project Catalog
 
-Demo - Link ->
+** Main Purpose:** The application is designed for space enthusiasts to share, catalog, and discuss space-related projects and articles. It provides a central hub where users can read about various space missions, create their own articles, and interact with the community through comments.
 
-##Setup & Config
+Demo - Link -> https://course-project.dragomel0v1234.workers.dev/
+
+## Setup & Config
+
 git clone https://github.com/DragomirMelov/Course-Project-
 
 npm i
 
 npm run dev
 
+## 2. User Access & Permissions
+**Guest (Not Authenticated):**
+*   **Available pages / routes:** Home (`/`), About (`/about`), Contacts (`/contact`), Projects Catalog (`/projects`), Project Details (`/projects/:projectid`), Login/Register (`/login`).
+*   **Public data shown:** Guests can browse and read all project articles and comments left by other users.
 
-*Authenticated User:**
+**Authenticated User:**
 *   **Main sections / pages:** In addition to guest access, authenticated users get access to the Create Project page (`/create/project`) and Edit Project page (`/projects/edit/:id`).
 *   **Details pages:** Logged-in users can interact by leaving comments under articles.
 *   **Create / Edit / Delete actions:** Users can create new projects. If a user is the author of a specific project, they can see and use the Edit and Delete options on that project's details page.
+*   
 
 ### 3. Authentication & Session Handling
 **Authentication Flow:**
@@ -121,10 +128,10 @@ npm run dev
 
 
 ### 10. Typical User Flow
-* 1 Goes to the 'Contact' route
-* 2 Registers or logs in
-* 3 Creates an article via the 'Contact' route
-* 4 Goes to 'Projects' to view and comment on other people's articles
+* 1. The user lands on the Home page and clicks "Projects" to browse the catalog.
+* 2. They click on an interesting article to read the details.
+* 3. Wanting to leave a comment, they click on "Account" (Login/Register), create an account, and log in.
+* 4. Once authenticated, they can leave a comment, or click "Create Project" to write their own article.
 
 ### 11. Error & Edge Case Handling
 *   **Authentication errors:** Invalid passwords or mismatched emails during registration trigger `alert()` messages.

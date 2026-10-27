@@ -21,7 +21,7 @@ const About = () => {
     </div>
     <div className="body">
       <div>
-        <img src="/src/assets/artwork/earth-satellite.jpg" alt="" />
+        <img src="/artwork/earth-satellite.jpg" alt="" />
         <h2>Built by Enthusiasts, for Enthusiasts</h2>
         <p>
      Our platform is powered by a community of astronomers, engineers, and 
@@ -34,7 +34,7 @@ const About = () => {
     </div>
     <div className="footer">
       <div>
-        <img src="/src/assets/artwork/space-shuttle.png" alt="" />
+        <img src="/artwork/space-shuttle.png" alt="" />
         <h2>Join the Crew</h2>
         <p>
               Do you have a passion for space? Register an account and start 

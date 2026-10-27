@@ -12,7 +12,7 @@ const HeaderMenu = () => {
     <div id="header">
     <div>
         <Link to="/"  className="logo">
-        <img src="/src/assets/artwork/logo.png" alt="" />
+        <img src="/artwork/logo.png" alt="" />
         </Link>
     <ul id="navigation">
             <li className={`${route.pathname === "/" ? 'menu selected': ''}`}>

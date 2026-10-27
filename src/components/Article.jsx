@@ -6,6 +6,7 @@ import HeaderMenu from './HeaderMenu';
 import { UserContext } from '../Context/userContext';
 import CreateComment from './Comments/CreateComment';
 import Comment from './Comments/Comment';
+import Footer from './Footer';
 
 const Article = (props) => {
   const {projectid} = useParams();
@@ -91,6 +92,7 @@ return(
 
     </div>
   </div>
+  <Footer/>
 </div>
 </>
 )

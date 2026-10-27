@@ -7,7 +7,7 @@ body {
 }
 
 body #page {
-	background: url("assets/artwork/images/bg-home.jpg") no-repeat scroll center top #000000;
+	background: url("/artwork/images/bg-home.jpg") no-repeat scroll center top #000000;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -28,11 +28,11 @@ img {
 @font-face {
 	font-family: 'audiowide-regular-webfont';
 	src: url('assets/fonts/audiowide-regular-webfont.eot');
-	src: url('assets/artwork/fonts/audiowide-regular-webfont.woff') format('woff'), url('assets/fonts/audiowide-regular-webfont.ttf') format('truetype'), url('assets/artwork/fonts/audiowide-regular-webfont.svg') format('svg');
+	src: url('assets/fonts/audiowide-regular-webfont.woff') format('woff'), url('assets/fonts/audiowide-regular-webfont.ttf') format('truetype'), url('/assets/fonts/audiowide-regular-webfont.svg') format('svg');
 }
 /*----------------------------------------header-styles---------------------------------------*/
 #header {
-	background: url(assets/artwork/bg-transparent1.png) repeat;
+	background: url(/artwork/bg-transparent1.png) repeat;
 	margin: 0;
 	min-height: 60px;
 	padding: 0;
@@ -240,7 +240,7 @@ img {
 	color: #ffffff;
 }
 #body.home .header div h3 {
-	background: url("assets/artwork/bg-transparent1.png") repeat;
+	background: url("/artwork/bg-transparent1.png") repeat;
 	color: #A3A3A3;
 	float: left;
 	font-family: audiowide-regular-webfont;
@@ -413,7 +413,7 @@ img {
 	opacity: 0.7;
 }
 #body.home .footer div ul li a span {
-	background: url(assets/artwork/icons.png) no-repeat 0 -152px;
+	background: url(/artwork/icons.png) no-repeat 0 -152px;
 	display: block;
 	height: 72px;
 	left: 199px;
@@ -424,7 +424,7 @@ img {
 	width: 62px;
 }
 #body.home .footer div ul li a:hover span {
-	background: url(assets/artwork/icons.png) no-repeat 0 -226px;
+	background: url(/artwork/icons.png) no-repeat 0 -226px;
 }
 #body.home .footer div ul li ul {
 	display: inline-block;
@@ -517,7 +517,7 @@ img {
 }
 /*----------------------------------------body-styles---------------------------------------*/
 #body.about .header {
-	background: url(assets/artwork/bg-about.jpg) no-repeat center top #000000;
+	background: url(/artwork/bg-about.jpg) no-repeat center top #000000;
 	margin: 0;
 	min-height: 455px;
 	padding: 0;
@@ -1335,7 +1335,7 @@ img {
 	width: 380px;
 }
 #footer .connect div div a {
-	background: url(assets/artwork/icons.png) no-repeat;
+	background: url(/artwork/icons.png) no-repeat;
 	display: block;
 	float: left;
 	height: 36px;

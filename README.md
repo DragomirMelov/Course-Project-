@@ -13,6 +13,9 @@ npm i
 
 npm run dev
 
+You will need to create your own .env file with your own environment variables.  VITE_URL , VITE_APIKEY
+
+
 ## 2. User Access & Permissions
 **Guest (Not Authenticated):**
 *   **Available pages / routes:** Home (`/`), About (`/about`), Contacts (`/contact`), Projects Catalog (`/projects`), Project Details (`/projects/:projectid`), Login/Register (`/login`).

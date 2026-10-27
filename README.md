@@ -138,7 +138,9 @@ npm run dev
 *   **Network or data errors:** API calls are wrapped in `try/catch` blocks. If fetching projects fails, the UI shows an error state.
 *   **Empty data states:** If the database has no projects, or a user hasn't written any comments, the UI displays a friendly "No projects found" or "Please create a post" message instead of crashing.
 
-## 📁 Project Structure
+## 📁 Project Architecture 
+The Architectures separating the UI into reusable pieces (`components`) and page-level views (`pages`). State management is handled globally via the **Context API** (`UserContext`), The app communicates with a serverless backend (**Supabase**) via a custom REST API wrapper, ensuring a clear separation between the frontend logic and remote data handling.
+
 
 ```text
 src/

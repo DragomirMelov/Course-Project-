@@ -61,25 +61,25 @@ const Index = () => {
             </a>
           </li>
           <li>
-            <h1>LATEST BLOG</h1>
+            <h1>LATEST PROJECTS</h1>
             <ul>
               <li>
-                <Link to="/blog">
+                <Link to="/projects">
                   <img src="/artwork/finding-planet.jpg" alt="" />
                 </Link>
                 <h1>FINDING PLANET X-123</h1>
                 <span>FEBRUARY 6, 2023</span>
-                <Link to="/blog" className="more">
+                <Link to="/projects" className="more">
                   Read More
                 </Link>
               </li>
               <li>
-                <Link to="/blog">
+                <Link to="/projects">
                   <img src="/artwork/new-satellitedish.jpg" alt="" />
                 </Link>
                 <h1>NEW SATELLITE DISH</h1>
                 <span>FEBRUARY 3, 2023</span>
-                <Link to="/blog" className="more">
+                <Link to="/projects" className="more">
                   Read More
                 </Link>
               </li>
